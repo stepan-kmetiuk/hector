@@ -2,27 +2,29 @@
 
 $grid-gutter-width: 40px;
 
-$container-mobile-gg-width: 80px;
-$full-responsive-mobile-sizes: true;
+$container-mobile-gg-width: 50px;
+$full-responsive-mobile-sizes: false;
 $min-width-design-mobile-layout: null; // null or px
 
 $make-container: true; // enable if bootstrap == false
 
 $exclude-size-responsive-points: ();
 
-$use-tailwind: true;
+$use-tailwind: false;
 
-$grid-breakpoints: (xs: 0,
+$grid-breakpoints: (
+  xs: 0,
   sm: 576px,
   md: 768px,
   lg: 992px,
   xl: 1200px,
   xxl: 1400px);
 
-$container-max-widths: (sm: 540px,
+$container-max-widths: (
+  sm: 540px,
   md: 720px,
   lg: 960px,
-  xl: 1140px,
+  xl: 1180px,
   xxl: 1682px);
 
 $grid-min-width-bp-key: nth(map-keys($grid-breakpoints), 2);

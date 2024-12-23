@@ -15,25 +15,24 @@
 //   @include size-breakpoints('padding-top', 40px, map-merge($sizes-bp, ()), map-merge($scales-bp, (md: 1, sm: 1)), (fz: 300px, zoom: 1));
 // }
 
+// $scales_bp: (
+//   xxl: 1,
+//   xl: 1,
+//   lg: 1.05,
+//   md: 1.4,
+//   sm: 1.3,
+// );
+
 %h4 {
   color: #0F0F0F;
-  font-size: 30px;
+  @include size-breakpoints('font-size', 30px, map-merge($sizes-bp, (md: null, sm: 18px)), map-merge($scales_bp, ()));
+  @include fz-b('font-size', 30px);
   font-weight: 700;
   line-height: normal;
-  letter-spacing: 2.1px;
+  @include size-breakpoints('letter-spacing', 2.1px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('letter-spacing', 2.1px, 30px);
 }
 
-.test {
-  color: var(--Black-1, #0F0F0F);
-  font-family: Montserrat;
-  @include size-breakpoints('font-size', 96px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
-  @include fz-b('font-size', 96px);
-  font-style: normal;
-  font-weight: 900;
-  line-height: 100%;
-  /* 96px */
-  letter-spacing: 6.72px;
-}
 
 .main-hero-wrap {
   display: flex;
@@ -41,50 +40,82 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
+
+
 }
 
 .main-hero-wrap-col-l {
+  @include size-breakpoints('padding-top', 50px, map-merge($sizes-bp, (md: 40px, sm: null)), map-merge($scales_bp, ()));
+  @include fz-b('padding-top', 120px);
+  @include size-breakpoints('padding-bottom', 50px, map-merge($sizes-bp, (md: 20px)), map-merge($scales_bp, ()));
+  @include fz-b('padding-bottom', 120px);
+
   width: calc-percentage(810, 1682);
 
   .dc-btn {
 
-    margin-top: 60px;
+    @include size-breakpoints('margin-top', 60px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('margin-top', 60px, 18px);
 
-    padding-left: 88px;
-    padding-right: 88px;
+    @include size-breakpoints('padding-left', 88px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('padding-left', 88px, 18px);
+    @include size-breakpoints('padding-right', 88px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('padding-right', 88px, 18px);
+  }
+  @include mb-down(md) {
+    width: 100%;
   }
 }
 
 .main-hero-content {
+  @include mb-down(md) {
+    text-align: center;
+  }
   h1 {
     color: var(--Black-1, #0F0F0F);
-    font-size: 96px;
+    @include size-breakpoints('font-size', 96px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+    @include fz-b('font-size', 96px);
     font-weight: 900;
     line-height: 100%;
     /* 96px */
-    letter-spacing: 6.72px;
+    @include size-breakpoints('letter-spacing', 6.72px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('letter-spacing', 6.72px, 96px);
 
-    margin-bottom: 20px;
+    @include size-breakpoints('margin-bottom', 20px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('margin-bottom', 20px, 96px);
   }
 
   p {
     color: var(--Black-1, #0F0F0F);
-    font-size: 24px;
+    @include size-breakpoints('font-size', 24px, map-merge($sizes-bp, (lg: 12px, md: 16px, sm: null)), map-merge($scales_bp, ()));
+    @include fz-b('font-size', 24px);
     font-weight: 400;
     line-height: normal;
-    letter-spacing: 1.68px;
+    @include size-breakpoints('letter-spacing', 1.68px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('letter-spacing', 1.68px, 24px);
 
-    padding-right: 146px;
+    @include size-breakpoints('padding-right', 146px, map-merge($sizes-bp, (md: 0, sm: null)), map-merge($scales_bp, ()));
+    @include fz-b('padding-right', 146px, 24px);
   }
 }
 
 .main-hero-wrap-col-r {
   width: 100% - calc-percentage(810, 1682);
+  @include mb-down(md) {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include mb-down(sm) {
+    width: 80%;
+  }
 }
 
 
 .main-hero-img {
   position: relative;
+
+  width: calc-percentage(748, 870);
 
   display: flex;
   flex-direction: row;
@@ -102,6 +133,11 @@
 
     z-index: -1;
     pointer-events: none;
+    svg,
+    img {
+      width: 118%;
+      max-width: none;
+    }
   }
 
   &__pic {
@@ -117,8 +153,10 @@
 
 // topcards
 .section-topcards {
-  padding-top: 30px;
-  padding-bottom: 36px;
+  @include size-breakpoints('padding-top', 30px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, (lg: 1.8)));
+  @include fz-b('padding-top', 30px);
+  @include size-breakpoints('padding-bottom', 36px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, (lg: 1.8)));
+  @include fz-b('padding-bottom', 36px);
 
   background-color: #F5F5F5;
 }
@@ -130,11 +168,19 @@
   align-items: stretch;
   justify-content: flex-start;
 
-  margin-left: -22px;
-  margin-right: -22px;
+  @include size-breakpoints('margin-left', -22px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('margin-left', -22px);
+  @include size-breakpoints('margin-right', -22px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('margin-right', -22px);
+
+  @include mb-down(lg) {
+    row-gap: 20px;
+  }
   & > * {
-    padding-left: 22px;
-    padding-right: 22px;
+    @include size-breakpoints('padding-left', 22px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('padding-left', 22px);
+    @include size-breakpoints('padding-right', 22px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('padding-right', 22px);
   }
 }
 
@@ -142,6 +188,12 @@
   width: 33.33%;
 
   display: flex;
+  @include mb-down(lg) {
+    width: 50%;
+  }
+  @include mb-down(md) {
+    width: 100%;
+  }
 }
 
 .topcards-item {
@@ -168,32 +220,46 @@
   }
 
   &__content {
-    padding-top: 48px;
-    padding-bottom: 48px;
+    @include size-breakpoints('padding-top', 48px, map-merge($sizes-bp, (md: null, sm: null)), map-merge($scales_bp, ()));
+    @include fz-b('padding-top', 48px);
+    @include size-breakpoints('padding-bottom', 48px, map-merge($sizes-bp, (md: null, sm: null)), map-merge($scales_bp, ()));
+    @include fz-b('padding-bottom', 48px);
 
 
     width: 100% - calc-percentage(240, 530);
 
     align-self: center;
-    padding-right: 5px;
+    @include size-breakpoints('padding-right', 5px, map-merge($sizes-bp, (md: 18px, sm: 15px)), map-merge($scales_bp, ()));
+    @include fz-b('padding-right', 5px);
   }
 
   &__title {
     h4 {
       @extend %h4;
+      @include mb-down(lg) {
+        font-size: 18px;
+        letter-spacing: 1px;
+      }
+      @include mb-down(md) {
+        font-size: 24px;
+      }
+
     }
   }
 
   &__p {
-    margin-top: 16px;
+    @include size-breakpoints('margin-top', 16px, map-merge($sizes-bp, (md: null, sm: null)), map-merge($scales_bp, (lg: 1.5)));
+    @include fz-b('margin-top', 16px);
     p {
       margin-top: 0;
       margin-bottom: 0;
       color: #0F0F0F;
-      font-size: 16px;
+      @include size-breakpoints('font-size', 16px, map-merge($sizes-bp, (xxl: 12px, xl: 10px, md: 14px, sm: 12px)), map-merge($scales_bp, (lg: 1.8)));
+      @include fz-b('font-size', 16px);
       font-weight: 300;
       line-height: normal;
-      letter-spacing: 1.12px;
+      @include size-breakpoints('letter-spacing', 1.12px, map-merge($sizes-bp, (md: null, sm: null)), map-merge($scales_bp, ()));
+      @include fz-b('letter-spacing', 1.12, 16px);
     }
   }
 }
@@ -203,17 +269,21 @@
 
 // products
 .section-products {
-  padding-top: 94px;
-  padding-bottom: 94px;
+  @include size-breakpoints('padding-top', 94px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('padding-top', 94px);
+  @include size-breakpoints('padding-bottom', 94px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('padding-bottom', 94px);
 
   .tabs-nav {
-    margin-bottom: 104px;
+    @include size-breakpoints('margin-bottom', 104px, map-merge($sizes-bp, (md: null, sm: 20px)), map-merge($scales_bp, ()));
+    @include fz-b('margin-bottom', 104px);
   }
 }
 .tabs-wrapper {
 }
 .tabs-nav {
-  margin-bottom: 64px;
+  @include size-breakpoints('margin-bottom', 64px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('margin-bottom', 64px);
   text-align: center;
   ul {
     display: inline-flex;
@@ -224,19 +294,32 @@
     justify-content: center;
     border-bottom: 1px solid #000;
 
+    @include size-breakpoints('column-gap', 80px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('column-gap', 80px);
+
     li {
       a {
         display: block;
         color: var(--Grey-2, #878787);
-        font-size: 18px;
+        @include size-breakpoints('font-size', 18px, map-merge($sizes-bp, (md: null, sm: 10px)), map-merge($scales_bp, (lg: 1.7)));
+        @include fz-b('font-size', 18px);
         font-weight: 700;
         line-height: normal;
-        letter-spacing: 1.26px;
+        @include size-breakpoints('letter-spacing', 1.26px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+        @include fz-b('letter-spacing', 1.26px, 18px);
 
-        padding-bottom: 21px;
-        padding-left: 42px;
-        padding-right: 42px;
-        border-bottom: 6px solid transparent;
+        @include size-breakpoints('padding-bottom', 21px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+        @include fz-b('padding-bottom', 21px, 18px);
+        @include size-breakpoints('padding-left', 42px, map-merge($sizes-bp, (md: null, sm: 12px)), map-merge($scales_bp, ()));
+        @include fz-b('padding-left', 42px, 18px);
+        @include size-breakpoints('padding-right', 42px, map-merge($sizes-bp, (md: null, sm: 12px)), map-merge($scales_bp, ()));
+        @include fz-b('padding-right', 42px, 18px);
+
+        @include size-breakpoints('border-bottom-width', 6px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+        @include fz-b('border-bottom-width', 6px, 18px);
+            border-bottom-style: solid;
+            border-bottom-color: transparent;
+
         transition: color .2s ease;
         &.active {
           color: #000;
@@ -272,15 +355,27 @@
   }
 }
 .products-row {
-  column-gap: 63px;
-  row-gap: 96px;
+  @include size-breakpoints('column-gap', 63px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('column-gap', 63px);
+  @include size-breakpoints('row-gap', 96px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('row-gap', 96px);
 
 
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  @include mb-down(lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  @include mb-down(md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  @include mb-down(sm) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 }
 .products-col {
 }
+
 
 .product-item {
   width: 100%;
@@ -290,8 +385,10 @@
     left: 0;
     top: 0;
 
-    width: 63px;
-    height: 63px;
+    @include size-breakpoints('width', 63px, map-merge($sizes-bp, (sm: xxl)), map-merge($scales_bp, (lg: 1.6, md: 2.3, sm: 1.8)));
+    @include fz-b('width', 63px);
+    @include size-breakpoints('height', 63px, map-merge($sizes-bp, (sm: xxl)), map-merge($scales_bp, (lg: 1.6, md: 2.3, sm: 1.8)));
+    @include fz-b('height', 63px);
     z-index: 2;
 
     display: flex;
@@ -307,7 +404,13 @@
       width: 100%;
       height: 100%;
       border-style: solid;
-      border-width: 63px 63px 0 0;
+
+      @include size-breakpoints('border-top-width', 63px, map-merge($sizes-bp, (sm: xxl)), map-merge($scales_bp, (lg: 1.6, md: 2.3, sm: 1.8)));
+      @include fz-b('border-top-width', 63px);
+          @include size-breakpoints('border-right-width', 63px, map-merge($sizes-bp, (sm: xxl)), map-merge($scales_bp, (lg: 1.6, md: 2.3, sm: 1.8)));
+          @include fz-b('border-right-width', 63px);
+          border-bottom-width: 0px;
+          border-left-width: 0px;
     }
     &_thm-1 {
       &:before {
@@ -324,10 +427,12 @@
     span {
       color: #fff;
       text-align: center;
-      font-size: 14px;
+      @include size-breakpoints('font-size', 14px, map-merge($sizes-bp, (sm: xxl)), map-merge($scales_bp, (lg: 1.6, md: 2.3, sm: 1.8)));
+      @include fz-b('font-size', 14px);
       font-weight: 700;
       line-height: normal;
-      letter-spacing: 1.4px;
+      @include size-breakpoints('letter-spacing', 1.4px, map-merge($sizes-bp, (sm: xxl)), map-merge($scales_bp, (lg: 1.6, md: 2.3, sm: 1.8)));
+      @include fz-b('letter-spacing', 1.4px, 14px);
       transform: rotate(-45deg) translate(0, -64%);
       position: absolute;
       display: block;
@@ -349,8 +454,10 @@
     }
   }
   &__details {
-    margin-top: 13px;
-    margin-bottom: 13px;
+    @include size-breakpoints('margin-top', 13px, map-merge($sizes-bp, (sm: null)), map-merge($scales_bp, (lg: 1.6, md: 2.3)));
+    @include fz-b('margin-top', 13px);
+    @include size-breakpoints('margin-bottom', 13px, map-merge($sizes-bp, (sm: null)), map-merge($scales_bp, (lg: 1.6, md: 2.3)));
+    @include fz-b('margin-bottom', 13px);
 
     display: flex;
     flex-direction: row;
@@ -364,12 +471,15 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-start;
-    column-gap: 5px;
+    @include size-breakpoints('column-gap', 5px, map-merge($sizes-bp, (sm: null)), map-merge($scales_bp, (lg: 1.6, md: 2.3)));
+    @include fz-b('column-gap', 5px);
     position: relative;
     z-index: 3;
     svg,
     img {
       display: block;
+      @include size-breakpoints('width', 26px, map-merge($sizes-bp, (sm: null)), map-merge($scales_bp, (lg: 1.6, md: 2.3)));
+      @include fz-b('width', 26px);
     }
   }
   &__sizes {
@@ -378,12 +488,14 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: flex-start;
-    column-gap: 8px;
+    @include size-breakpoints('column-gap', 8px, map-merge($sizes-bp, (sm: null)), map-merge($scales_bp, (lg: 1.6, md: 2.3)));
+    @include fz-b('column-gap', 8px);
     position: relative;
     z-index: 3;
     span {
       color: var(--Grey-3, #CECECE);
-      font-size: 22px;
+      @include size-breakpoints('font-size', 22px, map-merge($sizes-bp, (sm: null)), map-merge($scales_bp, (lg: 1.6, md: 2.3)));
+      @include fz-b('font-size', 22px);
       font-weight: 400;
       line-height: normal;
       cursor: pointer;
@@ -397,11 +509,13 @@
     }
   }
   &__content {
-    margin-bottom: 25px;
+    @include size-breakpoints('margin-bottom', 25px, map-merge($sizes-bp, (sm: null)), map-merge($scales_bp, (lg: 1.6, md: 2.3)));
+    @include fz-b('margin-bottom', 25px);
     a {
       text-decoration: none;
       color: #0F0F0F;
-      font-size: 16px;
+      @include size-breakpoints('font-size', 16px, map-merge($sizes-bp, (xxl: 12px, xl: 10px, sm: 16px)), map-merge($scales_bp, (lg: 1.6, md: 2.3)));
+      @include fz-b('font-size', 16px);
       font-weight: 400;
       line-height: normal;
       &:before {
@@ -421,12 +535,17 @@
   }
   &__price {
     color: #0F0F0F;
-    font-size: 30px;
+    @include size-breakpoints('font-size', 30px, map-merge($sizes-bp, (sm: 26px)), map-merge($scales_bp, (lg: 1.6, md: 2.3)));
+    @include fz-b('font-size', 30px);
     font-weight: 700;
     line-height: normal;
-    letter-spacing: 2.1px;
+    @include size-breakpoints('letter-spacing', 2.1px, map-merge($sizes-bp, (sm: null)), map-merge($scales_bp, (lg: 1.6, md: 2.3)));
+    @include fz-b('letter-spacing', 2.1px, 30px);
   }
 }
+
+
+
 
 // products end
 
@@ -434,8 +553,10 @@
 
 // trands 
 .section-trands {
-  padding-top: 78px;
-  padding-bottom: 78px;
+  @include size-breakpoints('padding-top', 78px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('padding-top', 78px);
+  @include size-breakpoints('padding-bottom', 78px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('padding-bottom', 78px);
   background-color: #F5F5F5;
 }
 
@@ -446,21 +567,51 @@
   align-items: stretch;
   justify-content: flex-start;
 
-  margin-left: -32px;
-  margin-right: -32px;
+  @include size-breakpoints('margin-left', -32px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+  @include fz-b('margin-left', -32px);
+  @include size-breakpoints('margin-right', -32px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+  @include fz-b('margin-right', -32px);
   & > * {
-    padding-left: 32px;
-    padding-right: 32px;
+    @include size-breakpoints('padding-left', 32px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+    @include fz-b('padding-left', 32px);
+    @include size-breakpoints('padding-right', 32px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+    @include fz-b('padding-right', 32px);
+  }
+  @include mb-down(md) {
+    row-gap: 20px;
   }
 }
 .col-trands {
   width: 50%;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  @include mb-down(md) {
+    width: 100%;
+  }
 }
 .trand-item {
   position: relative;
+  @include size-breakpoints('min-height', 450px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+  @include fz-b('min-height', 450px);
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
   &__img {
-    padding-top: calc-percentage(450, 810);
-    position: relative;
+    // padding-top: calc-percentage(450, 810);
+    // position: relative;
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     img {
       position: absolute;
       top: 0;
@@ -484,12 +635,18 @@
     }
   }
   &__content {
-    z-index: 2;
-    position: absolute;
     width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    z-index: 2;
+    position: relative;
+    @include size-breakpoints('padding-top', 60px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ())); 
+    @include fz-b('padding-top', 60px);
+    @include size-breakpoints('padding-bottom', 60px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));  
+    @include fz-b('padding-bottom', 60px);
+    // position: absolute;
+    // width: 100%;
+    // height: 100%;
+    // top: 0;
+    // left: 0;
 
     text-align: center;
 
@@ -504,15 +661,19 @@
   }
   &__title {
 
-    padding-left: 120px;
-    padding-right: 120px;
+    @include size-breakpoints('padding-left', 120px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('padding-left', 120px);
+    @include size-breakpoints('padding-right', 120px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('padding-right', 120px);
 
     h4 {
       color: var(--White, #FFF);
-      font-size: 36px;
+      @include size-breakpoints('font-size', 36px, map-merge($sizes-bp, (md: 16px, sm: null)), map-merge($scales_bp, ()));
+      @include fz-b('font-size', 36px);
       font-weight: 700;
       line-height: normal;
-      letter-spacing: 2.52px;
+      @include size-breakpoints('letter-spacing', 2.52px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+      @include fz-b('letter-spacing', 2.52px, 36px);
     }
   }
   &__hidden {
@@ -522,19 +683,24 @@
 
     overflow: hidden;
 
-    padding-left: 164px;
-    padding-right: 164px;
+    @include size-breakpoints('padding-left', 164px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+    @include fz-b('padding-left', 164px);
+    @include size-breakpoints('padding-right', 164px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+    @include fz-b('padding-right', 164px);
     p {
-      padding-top: 20px;
 
       margin-bottom: 0;
       margin-bottom: 0;
 
       color: var(--White, #FFF);
-      font-size: 18px;
+      @include size-breakpoints('font-size', 18px, map-merge($sizes-bp, (lg: 9px, md: 12px, sm: 10px)), map-merge($scales_bp, ()));
+      @include fz-b('font-size', 18px);
+      @include size-breakpoints('padding-top', 20px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+      @include fz-b('padding-top', 20px, 18px);
       font-weight: 400;
       line-height: normal;
-      letter-spacing: 1.26px;
+      @include size-breakpoints('letter-spacing', 1.26px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+      @include fz-b('letter-spacing', 1.26px, 18px);
     }
   }
 
@@ -556,8 +722,14 @@
       background-color: rgba(#0F0F0F, .9);
     }
     &__hidden {
-      max-height: 200px;
+      @include size-breakpoints('max-height', 200px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+      @include fz-b('max-height', 200px);
       transition: max-height 1s ease-in-out;
+    }
+  }
+  .dc-btn {
+    @include mb-down(lg) {
+      font-size: 10px;
     }
   }
 }
@@ -567,8 +739,10 @@
 
 // contacts 
 .section-contacts {
-  padding-top: 70px;
-  padding-bottom: 70px;
+  @include size-breakpoints('padding-top', 70px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('padding-top', 70px);
+  @include size-breakpoints('padding-bottom', 70px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('padding-bottom', 70px);
 }
 .row-contacts {
   display: flex;
@@ -576,17 +750,32 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
+  @include mb-down(md) {
+    row-gap: 20px;
+    justify-content: center;
+    text-align: center;
+  }
 }
 .col-header {
   width: calc-percentage(676, 1682);
 
-  padding-right: 62px;
+  @include size-breakpoints('padding-right', 62px, map-merge($sizes-bp, (md: 0, sm: null)), map-merge($scales_bp, ()));
+  @include fz-b('padding-right', 62px);
   h4 {
     @extend %h4;
+    @include mb-down(md) {
+      font-size: 16px;
+    }
+  }
+  @include mb-down(md) {
+    width: 100%;
   }
 }
 .col-main {
   width: 100% - calc-percentage(676, 1682);
+  @include mb-down(md) {
+    width: 100%;
+  }
 }
 .contacts-flex {
   display: flex;
@@ -594,12 +783,25 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
+  @include mb-down(sm) {
+    flex-wrap: wrap;
+    text-align: center;
+  }
 
-  margin-left: -25px;
-  margin-right: -25px;
+  @include size-breakpoints('margin-left', -25px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('margin-left', -25px);
+  @include size-breakpoints('margin-right', -25px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('margin-right', -25px);
   & > * {
-    padding-left: 25px;
-    padding-right: 25px;
+    @include size-breakpoints('padding-left', 25px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('padding-left', 25px);
+    @include size-breakpoints('padding-right', 25px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('padding-right', 25px);
+
+    @include mb-down(sm) {
+      width: 100% !important;
+    }
+
   }
 }
 .contacts-social {
@@ -610,11 +812,23 @@
     align-items: center;
     justify-content: flex-start;
 
-    column-gap: 30px;
+    @include size-breakpoints('width', 131px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('width', 131px);
+
+    @debug $sizes-bp;
+    @include size-breakpoints('column-gap', 30px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('column-gap', 30px);
+    @include mb-down(sm) {
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 20px;
+    }
     svg,
     img {
       display: block;
     }
+
     svg {
       path {
         transition: fill .4s ease;
@@ -647,8 +861,12 @@
       }
     }
     [type="submit"] {
-      width: 373px;
+      @include size-breakpoints('width', 373px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+      @include fz-b('width', 373px, 18px);
       font-weight: 700;
+      @include mb-down(lg) {
+        font-size: 13px;
+      }
     }
   }
 }
@@ -657,12 +875,19 @@
   position: relative;
   &__icon {
     position: absolute;
-    padding-left: 30px;
+    @include size-breakpoints('padding-left', 30px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('padding-left', 30px);
     top: 50%;
     transform: translate(0, -50%);
     pointer-events: none;
     & + input {
-      padding-left: 66px;
+      @include size-breakpoints('padding-left', 66px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+      @include fz-b('padding-left', 66px, 24px);
+    }
+    svg {
+      @include size-breakpoints('width', 24px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+      @include fz-b('width', 24px);
+      display: block;
     }
   }
   input {
@@ -670,10 +895,12 @@
     border: 2px solid #BFBFBF;
 
     color: #0f0f0f;
-    font-size: 24px;
+    @include size-breakpoints('font-size', 24px, map-merge($sizes-bp, (lg: 13px, md: null, sm: 12px)), map-merge($scales_bp, ()));
+    @include fz-b('font-size', 24px);
     font-weight: 400;
     line-height: normal;
-    letter-spacing: 1.68px;
+    @include size-breakpoints('letter-spacing', 1.68px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('letter-spacing', 1.68px, 24px);
     outline: none;
     @include placeholder {
       color: #878787;

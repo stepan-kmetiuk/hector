@@ -23,10 +23,21 @@
   text-align: center;
   user-select: none;
   background-color: transparent;
-  padding: 25px 40px;
 
-  font-size: 18px;
-  letter-spacing: 1.26px;
+  @include size-breakpoints('padding-top', 25px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('padding-top', 25px, 18px);
+  @include size-breakpoints('padding-bottom', 25px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('padding-bottom', 25px, 18px);
+  @include size-breakpoints('padding-left', 40px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('padding-left', 40px, 18px);
+  @include size-breakpoints('padding-right', 40px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('padding-right', 40px, 18px);
+
+  @include size-breakpoints('font-size', 18px, (lg: 14px), map-merge($scales_bp, ()));
+  @include fz-b('font-size', 18px);
+
+  @include size-breakpoints('letter-spacing', 1.26px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+  @include fz-b('letter-spacing', 1.26px, 18px);
 
   line-height: 1;
 
@@ -36,15 +47,7 @@
   border: 1px solid transparent;
   outline: 0;
 
-  @include mb-down(lg) {
-    padding: responsive(lg, 16px) responsive(lg, 24px);
-    font-size: responsive(lg, 14px);
-  }
 
-  @media screen and (max-width: 480px) {
-    padding: 11px 15px;
-    font-size: 11px;
-  }
 
   &_primary {
     color: #4D4D4D;
@@ -59,13 +62,6 @@
     // @include fz(62px, xl, lg, md, xl, null, 'padding-left');
     // @include fz(62px, xl, lg, md, xl, null, 'padding-right');
 
-    @include mb-up(xxl) {
-      font-size: 16/16+em;
-      padding-top: 16/16+em;
-      padding-bottom: 16/16+em;
-      padding-left: 62/16+em;
-      padding-right: 62/16+em;
-    }
 
     background-color: $primary_color;
     border-color: $primary_color;
@@ -190,9 +186,11 @@
   }
 
   &_w1 {
-    min-width: 370px;
+    @include size-breakpoints('min-width', 370px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('min-width', 370px, 18px);
   }
   &_w2 {
-    min-width: 270px;
+    @include size-breakpoints('min-width', 270px, map-merge($sizes-bp, (md: null)), map-merge($scales_bp, ()));
+    @include fz-b('min-width', 270px, 18px);
   }
 }

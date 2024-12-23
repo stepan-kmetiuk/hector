@@ -28,7 +28,6 @@ $mfz: (fz: null, zoom: 1) !default;
     }
   }
 
-  // @debug $sizes;
   @each $bp,
   $value in $sizes {
 

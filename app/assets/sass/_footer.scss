@@ -5,8 +5,10 @@
 
 .footer-main {
 
-  padding-top: 190px;
-  padding-bottom: 107px;
+  @include size-breakpoints('padding-top', 190px, map-merge($sizes-bp, (md: 30px, sm: null)), map-merge($scales_bp, (md: 1)));
+  @include fz-b('padding-top', 190px);
+  @include size-breakpoints('padding-bottom', 107px, map-merge($sizes-bp, (md: 30px, sm: null)), map-merge($scales_bp, (md: 1)));
+  @include fz-b('padding-bottom', 107px);
 
   background-color: #636363;
   position: relative;
@@ -15,7 +17,8 @@
     pointer-events: none;
     width: calc-percentage(1725, 1920);
     position: absolute;
-    bottom: -106px;
+    @include size-breakpoints('bottom', -106px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+    @include fz-b('bottom', -106px);
     left: 50%;
     transform: translate(-50%, 0);
 
@@ -35,12 +38,26 @@
   flex-wrap: wrap;
   align-items: stretch;
   justify-content: flex-start;
+  @include mb-down(md) {
+    row-gap: 20px;
+  }
 }
 .footer-main-col-logo {
   width: calc-percentage(374, 1682);
-  padding-right: 62px;
+  @include size-breakpoints('padding-right', 62px, map-merge($sizes-bp, (md: 0, sm: null)), map-merge($scales_bp, ()));
+  @include fz-b('padding-right', 62px);
+  @include mb-down(md) {
+    width: 100%;
+  }
 }
 .footer-logo {
+  @include size-breakpoints('width', 177px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+  @include fz-b('width', 177px);
+  @include mb-down(md) {
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
   img,
   svg {
     display: block;
@@ -57,7 +74,15 @@
 
   // margin-left: -40px;
   // margin-right: -40px;
-  column-gap: 100px;
+  @include size-breakpoints('column-gap', 100px, map-merge($sizes-bp, ()), map-merge($scales_bp, (md: 1)));
+  @include fz-b('column-gap', 100px);
+  @include mb-down(md) {
+    width: 100%;
+  }
+  @include mb-down(sm) {
+    flex-wrap: wrap;
+    row-gap: 16px;
+  }
   & > * {
     // padding-left: 40px;
     // padding-right: 40px;
@@ -68,9 +93,17 @@
   &:nth-child(1) {
     width: calc-percentage(380, 1308);
     flex-grow: 1;
+    @include mb-down(md) {
+    flex-grow: unset;
+    }
   }
   &:nth-child(2) {
     width: calc-percentage(345, 1308);
+    @include mb-down(md) {
+    }
+  }
+  @include mb-down(sm) {
+    width: 100% !important;
   }
 
 
@@ -78,13 +111,19 @@
     @extend %h4;
     color: #fff;
     text-transform: uppercase;
-    margin-bottom: 64px;
+    @include size-breakpoints('margin-bottom', 64px, map-merge($sizes-bp, (md: 12px)), map-merge($scales_bp, ()));
+    @include fz-b('margin-bottom', 64px, 30px);
+    @include mb-down(sm) {
+      margin-bottom: 12px;
+    }
+
   }
   ul.footer-menu {
     // width: 375px;
 
     columns: 2 auto;
-    column-gap: 24px; 
+    @include size-breakpoints('column-gap', 24px, map-merge($sizes-bp, ()), map-merge($scales_bp, ())); 
+    @include fz-b('column-gap', 24px);
 
     // display: flex;
     // flex-direction: row;
@@ -104,10 +143,15 @@
 
     a {
       color: rgba(255, 255, 255, 0.75);
-      font-size: 16px;
+      @include size-breakpoints('font-size', 16px, map-merge($sizes-bp, (xxl: 12px, xl: 10px, lg: 9px, md: null, sm: null)), map-merge($scales_bp, ()));
+      @include fz-b('font-size', 16px);
       font-weight: 400;
       line-height: glh(16px, 40px);
-      letter-spacing: 1.12px;
+      @include size-breakpoints('letter-spacing', 1.12px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+      @include fz-b('letter-spacing', 1.12px);
+      @include mb-down(md) {
+        line-height: 1.5;
+      }
     }
   }
 }
@@ -119,9 +163,11 @@
   align-items: flex-start;
   justify-content: flex-start;
 
-  margin-bottom: 42px;
+  @include size-breakpoints('margin-bottom', 42px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+  @include fz-b('margin-bottom', 42px);
 
-margin-top: -5px;
+@include size-breakpoints('margin-top', -5px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+@include fz-b('margin-top', -5px);
   a {
     @extend %h4;
     font-weight: 400;
@@ -142,12 +188,20 @@ margin-top: -5px;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
+  @include mb-between(sm, xl) {
+    row-gap: 8px;
+    flex-direction: column;
+  }
 
-  margin-left: -29px;
-  margin-right: -29px;
+  @include size-breakpoints('margin-left', -29px, map-merge($sizes-bp, ()), map-merge($scales_bp, (xxl: map-get($multiplier, xxl))));
+  @include fz-b('margin-left', -29px);
+  @include size-breakpoints('margin-right', -29px, map-merge($sizes-bp, ()), map-merge($scales_bp, (xxl: map-get($multiplier, xxl))));
+  @include fz-b('margin-right', -29px);
   & > * {
-    padding-left: 29px;
-    padding-right: 29px;
+    @include size-breakpoints('padding-left', 29px, map-merge($sizes-bp, ()), map-merge($scales_bp, (xxl: map-get($multiplier, xxl))));
+    @include fz-b('padding-left', 29px);
+    @include size-breakpoints('padding-right', 29px, map-merge($sizes-bp, ()), map-merge($scales_bp, (xxl: map-get($multiplier, xxl))));
+    @include fz-b('padding-right', 29px);
   }
   ul {
     display: flex;
@@ -156,9 +210,19 @@ margin-top: -5px;
     align-items: center;
     justify-content: flex-start;
 
-    column-gap: 26px;
+    @include size-breakpoints('column-gap', 26px, map-merge($sizes-bp, ()), map-merge($scales_bp, (xxl: map-get($multiplier, xxl))));
+    @include fz-b('column-gap', 26px);
+    svg,
+    img {
+      @include mb-down(xxl) {
+        transform: scale(map-get($multiplier, xxl));
+      }
+    }
   }
 }
+
+@debug $multiplier;
+
 .footer-social-l {
   position: relative;
   &:after {
@@ -168,9 +232,13 @@ margin-top: -5px;
     right: 0;
     top: 50%;
     transform: translate(0, -50%);
+    @include mb-between(sm, xl) {
+      display: none;
+    }
     
 
-    height: 28px;
+    @include size-breakpoints('height', 28px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+    @include fz-b('height', 28px);
     width: 1px;
     background: rgba(196, 196, 196, 0.25);
   }
@@ -185,14 +253,18 @@ margin-top: -5px;
 
 .footer-bottom {
   background-color: #333;
-  padding-top: 35px;
-  padding-bottom: 35px;
 
   color: rgba(255, 255, 255, 0.25);
-  font-size: 14px;
+  @include size-breakpoints('font-size', 14px, map-merge($sizes-bp, (xxl: 10px, lg: 8px)), map-merge($scales_bp, ()));
+  @include fz-b('font-size', 14px);
   font-weight: 400;
-  letter-spacing: 0.98px;
+  @include size-breakpoints('letter-spacing', 0.98px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+  @include fz-b('letter-spacing', .98px, 14px);
 
+  @include size-breakpoints('padding-top', 35px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+  @include fz-b('padding-top', 35px, 14px);
+  @include size-breakpoints('padding-bottom', 35px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+  @include fz-b('padding-bottom', 35px, 14px);
 }
 
 
@@ -204,13 +276,24 @@ margin-top: -5px;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
+  @include mb-down(md) {
+    flex-wrap: wrap;
+    row-gap: 16px;
+  }
 }
 .footer-bottom-col-l {
-
+  @include mb-down(md) {
+    width: 100%;
+  }
+}
+.copyright {
   color: rgba(255, 255, 255, 0.25);
-  font-size: 14px;
+  @include size-breakpoints('font-size', 14px, map-merge($sizes-bp, (xxl: 10px, lg: 8px, sm: 10px)), map-merge($scales_bp, ()));
+  @include fz-b('font-size', 14px);
   font-weight: 400;
-  letter-spacing: 0.98px;
+  @include size-breakpoints('letter-spacing', 0.98px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+  @include fz-b('letter-spacing', .98px, 14px);
+
 }
 .footer-bottom-col-l-flex {
   display: flex;
@@ -220,6 +303,13 @@ margin-top: -5px;
   justify-content: flex-start;
 
   column-gap: 40px;
+  @include mb-down(md) {
+    justify-content: center;
+  }
+  @include mb-down(sm) {
+    flex-direction: column;
+    row-gap: 10px;
+  }
   ul {
     display: flex;
     flex-direction: row;
@@ -233,12 +323,20 @@ margin-top: -5px;
       padding-left: 10px;
       padding-right: 10px;
       position: relative;
+      a {
+        color: rgba(255, 255, 255, 0.25);
+        @include size-breakpoints('font-size', 14px, map-merge($sizes-bp, (xxl: 10px, lg: 8px, md: 9px, sm: 10px)), map-merge($scales_bp, ()));
+        @include fz-b('font-size', 14px);
+        font-weight: 400;
+        @include size-breakpoints('letter-spacing', 0.98px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+        @include fz-b('letter-spacing', .98px, 14px);
+      }
       &:not(:last-child) {
         &:after {
           content: '|';
           display: block;
           position: absolute;
-          right: 0;
+          right: -1px;
           top: 50%;
           transform: translate(0, -50%);
         }
@@ -257,7 +355,10 @@ margin-top: -5px;
   }
 }
 .footer-bottom-col-r {
-
+@include mb-down(md) {
+  text-align: center;
+  width: 100%;
+}
 }
 .designby {
   display: flex;
@@ -265,11 +366,23 @@ margin-top: -5px;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  column-gap: 20px;
+  @include size-breakpoints('column-gap', 20px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+  @include fz-b('column-gap', 20px);
   &__title {
     font-weight: 600;
+
+    color: rgba(255, 255, 255, 0.25);
+    @include size-breakpoints('font-size', 14px, map-merge($sizes-bp, (xxl: 10px, lg: 8px, md: 9px, sm: 10px)), map-merge($scales_bp, ()));
+    @include fz-b('font-size', 14px);
+    font-weight: 400;
+    @include size-breakpoints('letter-spacing', 0.98px, map-merge($sizes-bp, ()), map-merge($scales_bp, ()));
+    @include fz-b('letter-spacing', .98px, 14px);
+
   }
   &__logo {
+  }
+  @include mb-down(md) {
+    justify-content: center;
   }
 }
 
