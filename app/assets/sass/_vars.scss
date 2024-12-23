@@ -1,0 +1,32 @@
+$font1: "Montserrat", serif;
+
+$main_color: #043988;
+
+$orange_color: orange;
+
+$default_color: #d3d3d3;
+
+$primary_color: #6222cc;
+$primary_color_lt: lighten(#6222cc, 50);
+$primary_color_hover: lighten(#6222cc, 10);
+
+$secondary_color: #29CFCF;
+
+$dark1: #04000b;
+
+
+
+// function =============================================================================================
+$scales_bp: (md: 1.44, sm: 1.3);
+
+.test-q {
+  border: 1px solid red;
+  @include size-breakpoints('font-size', 200px, map-merge($sizes-bp, (md: 24px, sm: sm)), map-merge($scales-bp, (md: 1.7, sm: 1.7)));
+  line-height: glh(200, 200);
+}
+
+.qwer {
+  background: red;
+  @include size-breakpoints('font-size', 300px, map-merge($sizes-bp, ()), map-merge($scales-bp, (md: 1, sm: 1)));
+  @include size-breakpoints('padding-top', 40px, map-merge($sizes-bp, ()), map-merge($scales-bp, (md: 1, sm: 1)), (fz: 300px, zoom: 1));
+}
