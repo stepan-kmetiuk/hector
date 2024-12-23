@@ -81,13 +81,13 @@
 
   &_secondary {
     color: #fff;
-    background-color: $secondary_color;
-    border-color: $secondary_color;
+    background-color: #0F0F0F;
+    border-color: #0F0F0F;
     transition: all .4s ease;
 
     &:hover {
-      background-color: darken($secondary_color, 5);
-      border-color: darken($secondary_color, 5);
+      background-color: lighten(#0F0F0F, 20);
+      border-color: lighten(#0F0F0F, 20);
     }
   }
 
